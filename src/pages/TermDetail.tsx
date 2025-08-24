@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AudioButton } from '@/components/AudioButton';
+import { TranslateButton } from '@/components/TranslateButton';
 import { termService } from '@/services/termService';
 import { Term } from '@/types';
 import { toast } from 'sonner';
@@ -118,11 +119,12 @@ const TermDetail = () => {
                     </div>
                     
                     <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-2 bg-muted px-4 py-2 rounded-lg">
+                      <div className="flex items-center gap-3 bg-muted px-4 py-2 rounded-lg">
                         <span className="font-mono text-lg text-foreground">
                           {term.phonetic}
                         </span>
                         <AudioButton text={term.word} size="lg" />
+                        <TranslateButton text={term.word} size="lg" />
                       </div>
                       
                       <Button

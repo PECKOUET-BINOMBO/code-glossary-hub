@@ -3,6 +3,7 @@ import { Volume2, TrendingUp, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { TranslateButton } from '@/components/TranslateButton';
 import { Term } from '@/types';
 
 interface TermCardProps {
@@ -63,6 +64,11 @@ export const TermCard = ({ term, onPlayAudio, onClick, index = 0 }: TermCardProp
                 >
                   <Volume2 className="h-4 w-4" />
                 </Button>
+                <TranslateButton 
+                  text={term.word} 
+                  size="sm"
+                  className="hover:scale-110"
+                />
               </div>
             </div>
             
