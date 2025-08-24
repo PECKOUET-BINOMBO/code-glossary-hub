@@ -83,7 +83,7 @@ export const TranslateButton = ({
                 'hover:bg-accent hover:text-accent-foreground hover:shadow-glow',
                 className
               )}
-              title="Translate to French"
+              title="Translate definition to French"
             >
               {isTranslating ? (
                 <Loader2 className={cn(iconSize, 'animate-spin')} />
@@ -95,8 +95,8 @@ export const TranslateButton = ({
         </TooltipTrigger>
         <TooltipContent side="bottom" className="max-w-xs p-3">
           <div className="space-y-2">
-            <p className="text-xs font-medium text-muted-foreground">French translation:</p>
-            <p className="text-sm">{translation || 'Click to translate'}</p>
+            <p className="text-xs font-medium text-muted-foreground">Définition en français:</p>
+            <p className="text-sm">{translation || 'Cliquer pour traduire'}</p>
           </div>
         </TooltipContent>
       </Tooltip>

@@ -124,7 +124,7 @@ const TermDetail = () => {
                           {term.phonetic}
                         </span>
                         <AudioButton text={term.word} size="lg" />
-                        <TranslateButton text={term.word} size="lg" />
+                        <TranslateButton text={term.definition} size="lg" />
                       </div>
                       
                       <Button
