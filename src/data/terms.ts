@@ -3,7 +3,7 @@ import { Term, Category } from '@/types';
 export const categories: Category[] = [
   {
     id: '1',
-    name: 'Programming Languages',
+    name: 'Langages de programmation',
     color: '#3b82f6',
     icon: '💻'
   },
@@ -21,7 +21,7 @@ export const categories: Category[] = [
   },
   {
     id: '4',
-    name: 'Tools',
+    name: 'Outils',
     color: '#10b981',
     icon: '🛠️'
   }
@@ -31,23 +31,23 @@ export const sampleTerms: Term[] = [
   {
     id: '1',
     word: 'Variable',
-    definition: 'A storage location with an associated name that contains data which can be modified during program execution.',
+    definition: 'Un emplacement de stockage avec un nom associé qui contient des données pouvant être modifiées pendant l\'exécution du programme.',
     phonetic: '/ˈvɛərɪəbəl/',
     category: categories[2],
-    example: 'let userName = "John"; // userName is a variable storing a string value',
-    context: 'Variables are fundamental in programming as they allow you to store and manipulate data. They can hold different types of values like numbers, strings, or objects.',
+    example: 'let userName = "John"; // userName est une variable stockant une valeur de chaîne',
+    context: 'Les variables sont fondamentales en programmation car elles permettent de stocker et manipuler des données. Elles peuvent contenir différents types de valeurs comme des nombres, des chaînes ou des objets.',
     searchCount: 245,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z'
   },
   {
     id: '2',
-    word: 'Algorithm',
-    definition: 'A step-by-step procedure or formula for solving a problem or completing a task in programming.',
+    word: 'Algorithme',
+    definition: 'Une procédure étape par étape ou une formule pour résoudre un problème ou accomplir une tâche en programmation.',
     phonetic: '/ˈælɡərɪðəm/',
     category: categories[2],
-    example: 'The bubble sort algorithm arranges elements by repeatedly swapping adjacent elements if they are in wrong order.',
-    context: 'Algorithms are the foundation of computer science and programming. They define the logic and efficiency of how problems are solved in software.',
+    example: 'L\'algorithme de tri à bulles organise les éléments en échangeant répétitivement les éléments adjacents s\'ils sont dans le mauvais ordre.',
+    context: 'Les algorithmes sont la base de l\'informatique et de la programmation. Ils définissent la logique et l\'efficacité de la façon dont les problèmes sont résolus dans les logiciels.',
     searchCount: 189,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z'
@@ -55,11 +55,11 @@ export const sampleTerms: Term[] = [
   {
     id: '3',
     word: 'Framework',
-    definition: 'A pre-written code structure that provides a foundation for developing applications, offering reusable components and standardized conventions.',
+    definition: 'Une structure de code pré-écrite qui fournit une base pour développer des applications, offrant des composants réutilisables et des conventions standardisées.',
     phonetic: '/ˈfreɪmˌwɜrk/',
     category: categories[1],
-    example: 'React is a JavaScript framework for building user interfaces with reusable components.',
-    context: 'Frameworks accelerate development by providing tested, standardized solutions for common programming tasks and architectural patterns.',
+    example: 'React est un framework JavaScript pour construire des interfaces utilisateur avec des composants réutilisables.',
+    context: 'Les frameworks accélèrent le développement en fournissant des solutions testées et standardisées pour les tâches de programmation courantes et les modèles architecturaux.',
     searchCount: 156,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z'
@@ -67,11 +67,11 @@ export const sampleTerms: Term[] = [
   {
     id: '4',
     word: 'API',
-    definition: 'Application Programming Interface - a set of protocols and tools that allows different software applications to communicate with each other.',
+    definition: 'Interface de Programmation d\'Application - un ensemble de protocoles et d\'outils qui permet à différentes applications logicielles de communiquer entre elles.',
     phonetic: '/ˌeɪ piː ˈaɪ/',
     category: categories[2],
-    example: 'The REST API allows the frontend to fetch user data from the backend server.',
-    context: 'APIs are essential for modern software development, enabling integration between different systems and services.',
+    example: 'L\'API REST permet au frontend de récupérer les données utilisateur depuis le serveur backend.',
+    context: 'Les API sont essentielles pour le développement logiciel moderne, permettant l\'intégration entre différents systèmes et services.',
     searchCount: 201,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z'
@@ -79,11 +79,11 @@ export const sampleTerms: Term[] = [
   {
     id: '5',
     word: 'Git',
-    definition: 'A distributed version control system that tracks changes in source code during software development.',
+    definition: 'Un système de contrôle de version distribué qui suit les changements dans le code source pendant le développement logiciel.',
     phonetic: '/ɡɪt/',
     category: categories[3],
-    example: 'Use "git commit -m \'Initial commit\'" to save your changes to the repository.',
-    context: 'Git is essential for collaborative programming, allowing multiple developers to work on the same project while tracking all changes.',
+    example: 'Utilisez "git commit -m \'Commit initial\'" pour sauvegarder vos changements dans le dépôt.',
+    context: 'Git est essentiel pour la programmation collaborative, permettant à plusieurs développeurs de travailler sur le même projet tout en suivant tous les changements.',
     searchCount: 167,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z'
@@ -91,23 +91,23 @@ export const sampleTerms: Term[] = [
   {
     id: '6',
     word: 'JavaScript',
-    definition: 'A high-level, interpreted programming language that is widely used for web development and creating interactive web pages.',
+    definition: 'Un langage de programmation de haut niveau et interprété largement utilisé pour le développement web et la création de pages web interactives.',
     phonetic: '/ˈdʒɑvəˌskrɪpt/',
     category: categories[0],
-    example: 'function greet(name) { return `Hello, ${name}!`; } // JavaScript function',
-    context: 'JavaScript is the backbone of modern web development, running in browsers and servers to create dynamic, interactive experiences.',
+    example: 'function greet(name) { return `Bonjour, ${name}!`; } // Fonction JavaScript',
+    context: 'JavaScript est l\'épine dorsale du développement web moderne, s\'exécutant dans les navigateurs et serveurs pour créer des expériences dynamiques et interactives.',
     searchCount: 298,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z'
   },
   {
     id: '7',
-    word: 'Database',
-    definition: 'An organized collection of structured information or data stored electronically in a computer system.',
+    word: 'Base de données',
+    definition: 'Une collection organisée d\'informations structurées ou de données stockées électroniquement dans un système informatique.',
     phonetic: '/ˈdeɪtəˌbeɪs/',
     category: categories[2],
-    example: 'The user information is stored in a MySQL database with tables for users, posts, and comments.',
-    context: 'Databases are crucial for storing and retrieving data efficiently in applications, from simple websites to complex enterprise systems.',
+    example: 'Les informations utilisateur sont stockées dans une base de données MySQL avec des tables pour les utilisateurs, les posts et les commentaires.',
+    context: 'Les bases de données sont cruciales pour stocker et récupérer efficacement les données dans les applications, des sites web simples aux systèmes d\'entreprise complexes.',
     searchCount: 178,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z'
@@ -115,23 +115,23 @@ export const sampleTerms: Term[] = [
   {
     id: '8',
     word: 'React',
-    definition: 'A popular JavaScript library for building user interfaces, especially single-page applications with reusable components.',
+    definition: 'Une bibliothèque JavaScript populaire pour construire des interfaces utilisateur, spécialement des applications à page unique avec des composants réutilisables.',
     phonetic: '/riˈækt/',
     category: categories[1],
-    example: 'const Button = () => <button>Click me</button>; // React component',
-    context: 'React revolutionized frontend development with its component-based architecture and virtual DOM, making complex UIs more manageable.',
+    example: 'const Button = () => <button>Cliquez-moi</button>; // Composant React',
+    context: 'React a révolutionné le développement frontend avec son architecture basée sur les composants et le DOM virtuel, rendant les interfaces utilisateur complexes plus gérables.',
     searchCount: 234,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z'
   },
   {
     id: '9',
-    word: 'Debugging',
-    definition: 'The process of finding and fixing errors or bugs in computer programs or systems.',
+    word: 'Débogage',
+    definition: 'Le processus de recherche et de correction d\'erreurs ou de bugs dans les programmes informatiques ou systèmes.',
     phonetic: '/dɪˈbʌɡɪŋ/',
     category: categories[2],
-    example: 'Using console.log() statements to debug JavaScript code and understand variable values.',
-    context: 'Debugging is an essential skill for developers, involving systematic approaches to identify and resolve issues in code.',
+    example: 'Utiliser des instructions console.log() pour déboguer le code JavaScript et comprendre les valeurs des variables.',
+    context: 'Le débogage est une compétence essentielle pour les développeurs, impliquant des approches systématiques pour identifier et résoudre les problèmes dans le code.',
     searchCount: 145,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z'
@@ -139,11 +139,11 @@ export const sampleTerms: Term[] = [
   {
     id: '10',
     word: 'CSS',
-    definition: 'Cascading Style Sheets - a stylesheet language used for describing the presentation and styling of HTML documents.',
+    definition: 'Feuilles de Style en Cascade - un langage de feuille de style utilisé pour décrire la présentation et le style des documents HTML.',
     phonetic: '/siː ɛs ɛs/',
     category: categories[0],
     example: '.button { background-color: blue; padding: 10px; border-radius: 5px; }',
-    context: 'CSS is fundamental for web development, controlling the visual appearance of websites and ensuring responsive, attractive designs.',
+    context: 'CSS est fondamental pour le développement web, contrôlant l\'apparence visuelle des sites web et assurant des designs responsifs et attrayants.',
     searchCount: 187,
     createdAt: '2024-01-15T10:00:00Z',
     updatedAt: '2024-01-15T10:00:00Z'

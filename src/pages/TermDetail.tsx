@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Calendar, TrendingUp, Copy, Check, ExternalLink, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -27,7 +26,7 @@ const TermDetail = () => {
         setTerm(fetchedTerm);
       } catch (error) {
         console.error('Error fetching term:', error);
-        toast.error('Error loading term details');
+        toast.error('Erreur lors du chargement des détails du terme');
       } finally {
         setLoading(false);
       }
@@ -40,10 +39,10 @@ const TermDetail = () => {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      toast.success('Copied to clipboard!');
+      toast.success('Copié dans le presse-papiers !');
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-      toast.error('Failed to copy to clipboard');
+      toast.error('Échec de la copie dans le presse-papiers');
     }
   };
 
@@ -62,10 +61,9 @@ const TermDetail = () => {
     return (
       <div className="min-h-screen bg-gradient-subtle flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Term Not Found</h1>
+          <h1 className="text-2xl font-bold mb-4">Terme non trouvé</h1>
           <Button onClick={() => navigate('/')}>
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
+            ← Retour à l'accueil
           </Button>
         </div>
       </div>
@@ -82,8 +80,7 @@ const TermDetail = () => {
             onClick={() => navigate('/')}
             className="mb-4 hover:bg-accent"
           >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Search
+            ← Retour à la recherche
           </Button>
         </div>
       </div>
@@ -113,7 +110,6 @@ const TermDetail = () => {
                           border: `1px solid ${term.category.color}30`
                         }}
                       >
-                        <span className="mr-2">{term.category.icon}</span>
                         {term.category.name}
                       </Badge>
                     </div>
@@ -133,20 +129,18 @@ const TermDetail = () => {
                         onClick={() => copyToClipboard(term.phonetic)}
                         className="hover:bg-accent"
                       >
-                        {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                        {copied ? '✓' : '📋'}
                       </Button>
                     </div>
                   </div>
 
                   <div className="text-right space-y-2">
                     <div className="flex items-center gap-2 text-muted-foreground">
-                      <TrendingUp className="h-4 w-4" />
-                      <span className="text-sm">{term.searchCount} searches</span>
+                      <span className="text-sm">{term.searchCount} recherches</span>
                     </div>
                     <div className="flex items-center gap-2 text-muted-foreground">
-                      <Calendar className="h-4 w-4" />
                       <span className="text-sm">
-                        Updated {new Date(term.updatedAt).toLocaleDateString()}
+                        Mis à jour {new Date(term.updatedAt).toLocaleDateString('fr-FR')}
                       </span>
                     </div>
                   </div>
@@ -157,8 +151,7 @@ const TermDetail = () => {
                 {/* Definition */}
                 <div>
                   <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-                    <BookOpen className="h-5 w-5 text-primary" />
-                    Definition
+                    Définition
                   </h3>
                   <p className="text-lg leading-relaxed text-foreground/90">
                     {term.definition}
@@ -168,8 +161,7 @@ const TermDetail = () => {
                 {/* Context */}
                 <div>
                   <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-                    <ExternalLink className="h-5 w-5 text-accent" />
-                    Context & Usage
+                    Contexte et utilisation
                   </h3>
                   <p className="text-base leading-relaxed text-foreground/80">
                     {term.context}
@@ -178,7 +170,7 @@ const TermDetail = () => {
 
                 {/* Example */}
                 <div>
-                  <h3 className="text-xl font-semibold mb-3">Example</h3>
+                  <h3 className="text-xl font-semibold mb-3">Exemple</h3>
                   <Card className="bg-muted/50 border-border/30">
                     <CardContent className="p-4">
                       <pre className="font-mono text-sm leading-relaxed text-foreground/90 whitespace-pre-wrap">
@@ -195,16 +187,14 @@ const TermDetail = () => {
                     variant="outline"
                     className="hover:bg-accent"
                   >
-                    <Copy className="mr-2 h-4 w-4" />
-                    Copy Definition
+                    📋 Copier la définition
                   </Button>
                   <Button
                     onClick={() => copyToClipboard(term.example)}
                     variant="outline"
                     className="hover:bg-accent"
                   >
-                    <Copy className="mr-2 h-4 w-4" />
-                    Copy Example
+                    📋 Copier l'exemple
                   </Button>
                 </div>
               </CardContent>

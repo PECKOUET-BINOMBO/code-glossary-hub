@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, BookOpen, Sparkles, TrendingUp, Settings, Github } from 'lucide-react';
 import { SearchBar } from '@/components/SearchBar';
 import { TermCard } from '@/components/TermCard';
 import { Button } from '@/components/ui/button';
@@ -10,12 +9,10 @@ import { Badge } from '@/components/ui/badge';
 import { termService } from '@/services/termService';
 import { SearchFilters, Term } from '@/types';
 import { toast } from 'sonner';
-import heroBg from '@/assets/hero-bg.jpg';
 
 const Index = () => {
   const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState<Term[]>([]);
-  const [popularTerms, setPopularTerms] = useState<Term[]>([]);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
@@ -23,9 +20,6 @@ const Index = () => {
   useEffect(() => {
     const loadInitialData = async () => {
       try {
-        const popular = await termService.getPopularTerms(6);
-        setPopularTerms(popular);
-        
         // Get all terms for suggestions
         const allTerms = await termService.getAllTerms();
         setSuggestions(allTerms.map(term => term.word));
@@ -52,11 +46,11 @@ const Index = () => {
       setSearchResults(results);
       
       if (results.length === 0) {
-        toast.info('No terms found. Try a different search term.');
+        toast.info('Aucun terme trouvé. Essayez un autre terme de recherche.');
       }
     } catch (error) {
       console.error('Error searching terms:', error);
-      toast.error('Error searching terms. Please try again.');
+      toast.error('Erreur lors de la recherche. Veuillez réessayer.');
     } finally {
       setLoading(false);
     }
@@ -67,22 +61,13 @@ const Index = () => {
   };
 
   const handlePlayAudio = (term: Term) => {
-    // Audio will be handled by the AudioButton component
-    toast.success(`Playing pronunciation for "${term.word}"`);
+    toast.success(`Lecture de la prononciation pour "${term.word}"`);
   };
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      {/* Hero Section */}
-      <div 
-        className="relative overflow-hidden bg-gradient-hero"
-        style={{
-          backgroundImage: `linear-gradient(135deg, rgba(37, 48, 79, 0.9), rgba(65, 42, 101, 0.9)), url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
+      {/* Hero Section Simplifiée */}
+      <div className="relative overflow-hidden bg-gradient-hero">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-6xl mx-auto px-6 py-20 text-center">
           <motion.div
@@ -91,28 +76,14 @@ const Index = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="space-y-6"
           >
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Code2 className="h-12 w-12 text-white animate-float" />
-              <h1 className="text-5xl md:text-6xl font-bold text-white">
-                CodeGlossary
-              </h1>
-            </div>
+            <h1 className="text-5xl md:text-6xl font-bold text-white">
+              Glossaire Code
+            </h1>
             
             <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Your interactive dictionary for programming terms. Search, learn, and master 
-              the language of code with pronunciations and clear explanations.
+              Votre dictionnaire interactif pour les termes de programmation. Recherchez, apprenez et maîtrisez 
+              le langage du code avec des prononciations et des explications claires.
             </p>
-
-            <div className="flex items-center justify-center gap-3 text-white/80">
-              <Sparkles className="h-5 w-5" />
-              <span>Over {popularTerms.length * 2} programming terms</span>
-              <span>•</span>
-              <BookOpen className="h-5 w-5" />
-              <span>Audio pronunciations</span>
-              <span>•</span>
-              <TrendingUp className="h-5 w-5" />
-              <span>Real examples</span>
-            </div>
           </motion.div>
         </div>
       </div>
@@ -158,9 +129,9 @@ const Index = () => {
             >
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold">
-                  Search Results 
+                  Résultats de recherche
                   <Badge variant="secondary" className="ml-3">
-                    {searchResults.length} terms
+                    {searchResults.length} termes
                   </Badge>
                 </h2>
               </div>
@@ -180,13 +151,12 @@ const Index = () => {
               ) : (
                 <Card className="bg-card/80 backdrop-blur-sm border-border/50">
                   <CardContent className="p-12 text-center">
-                    <BookOpen className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">No terms found</h3>
+                    <h3 className="text-xl font-semibold mb-2">Aucun terme trouvé</h3>
                     <p className="text-muted-foreground mb-6">
-                      Try searching for a different programming term or browse popular terms below.
+                      Essayez de rechercher un autre terme de programmation.
                     </p>
                     <Button onClick={() => setHasSearched(false)} variant="outline">
-                      Browse Popular Terms
+                      Nouvelle recherche
                     </Button>
                   </CardContent>
                 </Card>
@@ -194,30 +164,18 @@ const Index = () => {
             </motion.div>
           ) : (
             <motion.div
-              key="popular"
+              key="welcome"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="space-y-8"
+              className="text-center py-20"
             >
-              <div className="text-center space-y-4">
-                <h2 className="text-3xl font-bold gradient-text">Popular Terms</h2>
-                <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                  Discover the most searched programming terms and concepts
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {popularTerms.map((term, index) => (
-                  <TermCard
-                    key={term.id}
-                    term={term}
-                    onPlayAudio={handlePlayAudio}
-                    onClick={handleTermClick}
-                    index={index}
-                  />
-                ))}
-              </div>
+              <h2 className="text-2xl font-bold gradient-text mb-4">
+                Commencez votre recherche
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Utilisez la barre de recherche ci-dessus pour trouver des termes de programmation
+              </p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -228,8 +186,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-6 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Code2 className="h-6 w-6 text-primary" />
-              <span className="font-semibold">CodeGlossary</span>
+              <span className="font-semibold">Glossaire Code</span>
             </div>
             
             <div className="flex items-center gap-4">
@@ -239,19 +196,13 @@ const Index = () => {
                 onClick={() => navigate('/admin')}
                 className="hover:bg-accent"
               >
-                <Settings className="mr-2 h-4 w-4" />
-                Admin
-              </Button>
-              
-              <Button variant="ghost" size="sm" className="hover:bg-accent">
-                <Github className="mr-2 h-4 w-4" />
-                GitHub
+                Administration
               </Button>
             </div>
           </div>
           
           <div className="text-center text-muted-foreground text-sm mt-6 pt-6 border-t border-border/30">
-            <p>Built with ❤️ for developers by developers</p>
+            <p>Construit avec ❤️ pour les développeurs par les développeurs</p>
           </div>
         </div>
       </footer>

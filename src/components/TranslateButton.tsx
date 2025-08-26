@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Languages, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -31,7 +30,7 @@ export const TranslateButton = ({
     try {
       // Using a simple translation service (MyMemory API - free)
       const response = await fetch(
-        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|fr`
+        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=fr|en`
       );
       
       const data = await response.json();
@@ -40,22 +39,22 @@ export const TranslateButton = ({
         const translatedText = data.responseData.translatedText;
         setTranslation(translatedText);
         setIsOpen(true);
-        toast.success('Translation ready!');
+        toast.success('Traduction prête !');
       } else {
         throw new Error('Translation failed');
       }
     } catch (error) {
       console.error('Error translating text:', error);
-      toast.error('Translation failed');
+      toast.error('Échec de la traduction');
     } finally {
       setIsTranslating(false);
     }
   };
 
   const iconSize = {
-    sm: 'h-3 w-3',
-    md: 'h-4 w-4', 
-    lg: 'h-5 w-5'
+    sm: 'text-xs',
+    md: 'text-sm', 
+    lg: 'text-base'
   }[size];
 
   const buttonSize = {
@@ -83,19 +82,19 @@ export const TranslateButton = ({
                 'hover:bg-accent hover:text-accent-foreground hover:shadow-glow',
                 className
               )}
-              title="Translate definition to French"
+              title="Traduire la définition en anglais"
             >
               {isTranslating ? (
-                <Loader2 className={cn(iconSize, 'animate-spin')} />
+                <span className={cn(iconSize, 'animate-spin')}>⏳</span>
               ) : (
-                <Languages className={iconSize} />
+                <span className={iconSize}>🌐</span>
               )}
             </Button>
           </motion.div>
         </TooltipTrigger>
         <TooltipContent side="bottom" className="max-w-xs p-3">
           <div className="space-y-2">
-            <p className="text-xs font-medium text-muted-foreground">Définition en français:</p>
+            <p className="text-xs font-medium text-muted-foreground">Définition en anglais :</p>
             <p className="text-sm">{translation || 'Cliquer pour traduire'}</p>
           </div>
         </TooltipContent>

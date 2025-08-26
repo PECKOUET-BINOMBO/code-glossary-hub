@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Volume2, VolumeX, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -90,9 +89,9 @@ export const AudioButton = ({
   };
 
   const iconSize = {
-    sm: 'h-3 w-3',
-    md: 'h-4 w-4', 
-    lg: 'h-5 w-5'
+    sm: 'text-xs',
+    md: 'text-sm', 
+    lg: 'text-base'
   }[size];
 
   const buttonSize = {
@@ -118,14 +117,14 @@ export const AudioButton = ({
           'hover:bg-primary hover:text-primary-foreground hover:shadow-glow',
           className
         )}
-        title={isPlaying ? 'Stop pronunciation' : 'Play pronunciation'}
+        title={isPlaying ? 'Arrêter la prononciation' : 'Jouer la prononciation'}
       >
         {isLoading ? (
-          <Loader2 className={cn(iconSize, 'animate-spin')} />
+          <span className={cn(iconSize, 'animate-spin')}>⏳</span>
         ) : isPlaying ? (
-          <VolumeX className={iconSize} />
+          <span className={iconSize}>🔇</span>
         ) : (
-          <Volume2 className={iconSize} />
+          <span className={iconSize}>🔊</span>
         )}
       </Button>
     </motion.div>

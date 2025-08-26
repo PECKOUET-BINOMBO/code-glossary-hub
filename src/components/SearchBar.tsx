@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Search, Filter, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -70,24 +69,21 @@ export const SearchBar = ({ onSearch, suggestions = [], className = '' }: Search
     >
       {/* Main Search Input */}
       <div className="relative search-input">
-        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground">
-          <Search className="h-5 w-5" />
-        </div>
         <Input
           type="text"
-          placeholder="Search programming terms..."
+          placeholder="Rechercher des termes de programmation..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyPress={handleKeyPress}
           onFocus={() => query.length > 0 && setShowSuggestions(true)}
-          className="h-14 pl-12 pr-20 text-lg rounded-2xl border-2 border-border/50 bg-card/80 backdrop-blur-sm transition-all duration-300 focus:border-primary focus:shadow-glow"
+          className="h-14 pl-6 pr-20 text-lg rounded-2xl border-2 border-border/50 bg-card/80 backdrop-blur-sm transition-all duration-300 focus:border-primary focus:shadow-glow"
         />
         <Button 
           onClick={handleSearch}
           className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-xl bg-gradient-primary hover:shadow-accent"
           size="sm"
         >
-          Search
+          Rechercher
         </Button>
       </div>
 
@@ -110,7 +106,6 @@ export const SearchBar = ({ onSearch, suggestions = [], className = '' }: Search
                 className="px-4 py-3 hover:bg-muted cursor-pointer transition-colors first:rounded-t-xl last:rounded-b-xl"
               >
                 <div className="flex items-center gap-3">
-                  <Search className="h-4 w-4 text-muted-foreground" />
                   <span className="text-foreground">{suggestion}</span>
                 </div>
               </motion.div>
@@ -140,16 +135,17 @@ export const SearchBar = ({ onSearch, suggestions = [], className = '' }: Search
               handleSearch();
             }}
           >
-            <span className="mr-1">{category.icon}</span>
             {category.name}
             {selectedCategory === category.id && (
-              <X 
-                className="ml-2 h-3 w-3 cursor-pointer hover:text-destructive" 
+              <span 
+                className="ml-2 cursor-pointer hover:text-destructive" 
                 onClick={(e) => {
                   e.stopPropagation();
                   clearCategory();
                 }}
-              />
+              >
+                ×
+              </span>
             )}
           </Badge>
         ))}

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Volume2, TrendingUp, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -48,7 +47,6 @@ export const TermCard = ({ term, onPlayAudio, onClick, index = 0 }: TermCardProp
                   className="text-xs"
                   style={{ backgroundColor: `${term.category.color}15`, color: term.category.color }}
                 >
-                  <span className="mr-1">{term.category.icon}</span>
                   {term.category.name}
                 </Badge>
               </div>
@@ -62,7 +60,7 @@ export const TermCard = ({ term, onPlayAudio, onClick, index = 0 }: TermCardProp
                   onClick={handlePlayAudio}
                   className="h-8 w-8 p-0 hover:bg-accent hover:scale-110 transition-all audio-pulse"
                 >
-                  <Volume2 className="h-4 w-4" />
+                  🔊
                 </Button>
                 <TranslateButton 
                   text={term.definition} 
@@ -74,8 +72,7 @@ export const TermCard = ({ term, onPlayAudio, onClick, index = 0 }: TermCardProp
             
             {/* Popularity Indicator */}
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <TrendingUp className="h-3 w-3" />
-              <span>{term.searchCount}</span>
+              <span>{term.searchCount} recherches</span>
             </div>
           </div>
 
@@ -94,11 +91,10 @@ export const TermCard = ({ term, onPlayAudio, onClick, index = 0 }: TermCardProp
           {/* Footer */}
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <div className="flex items-center gap-1">
-              <Clock className="h-3 w-3" />
-              <span>Updated {new Date(term.updatedAt).toLocaleDateString()}</span>
+              <span>Mis à jour {new Date(term.updatedAt).toLocaleDateString('fr-FR')}</span>
             </div>
             <span className="text-primary/70 group-hover:text-primary transition-colors">
-              Click to view details →
+              Cliquer pour voir les détails →
             </span>
           </div>
         </CardContent>
